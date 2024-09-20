@@ -4,6 +4,7 @@ import { postsService } from "@/services/PostsService.js";
 import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
 import { computed, onMounted } from "vue";
+import PostCard from "@/components/globals/PostCard.vue";
 
 const posts = computed(() => AppState.posts)
 
@@ -32,10 +33,8 @@ async function getAllPosts() {
       </div>
     </section>
     <section class="row">
-      <div class="col-md-12">
-        <div>
-
-        </div>
+      <div v-for="post in posts" :key="post.id" class="col-md-12 mb-5">
+        <PostCard :postProp="post" />
       </div>
     </section>
   </div>

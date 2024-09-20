@@ -11,6 +11,11 @@ export class Post {
     this.likes = data.likes
 
   }
+
+  //Update so it shows Xh before 24h else xd after 24h else xm after 31d
+  get customDate() {
+    return this.createdAt.getHours()
+  }
 }
 
 const data = {

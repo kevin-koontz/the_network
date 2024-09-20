@@ -12,6 +12,10 @@ import { AppState } from './AppState.js';
     <router-view />
   </main>
   <footer>
+    <div class="d-flex justify-content-around mb-5">
+      <button class="btn fs-4"> {{ " < " }} Previous</button>
+          <button class=" btn fs-4">Next {{ " > " }}</button>
+    </div>
   </footer>
 </template>
 
