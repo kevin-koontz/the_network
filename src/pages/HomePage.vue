@@ -1,0 +1,44 @@
+<script setup>
+import { AppState } from "@/AppState.js";
+import { postsService } from "@/services/PostsService.js";
+import { logger } from "@/utils/Logger.js";
+import Pop from "@/utils/Pop.js";
+import { computed, onMounted } from "vue";
+
+const posts = computed(() => AppState.posts)
+
+onMounted(() => {
+  getAllPosts()
+})
+
+async function getAllPosts() {
+  try {
+    postsService.getAllPosts()
+  }
+  catch (error) {
+    Pop.error(error);
+    logger.error(error)
+  }
+}
+</script>
+
+<template>
+  <div class="container">
+    <section class="row">
+      <div class="col-md-12">
+        <div class="text-center fs-1 fw-bold">
+          HELLO
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-md-12">
+        <div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<style scoped lang="scss"></style>
