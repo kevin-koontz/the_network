@@ -20,9 +20,9 @@ defineProps({
           </div>
         </div>
       </div>
-      <!-- FIXME - get ''...' to top of element -->
+      <!-- FIXME - get '...' to top of element -->
       <div>
-        <div class="fs-1">...</div>
+        <div class="btn fs-1 mx-4">...</div>
       </div>
     </div>
     <div>
@@ -50,8 +50,9 @@ defineProps({
 }
 
 .user-post-img {
-  height: 50dvh;
+  height: 40dvh;
   width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
 }
