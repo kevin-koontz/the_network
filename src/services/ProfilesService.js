@@ -13,6 +13,7 @@ class ProfilesService {
     const newProfile = new Account(response.data)
     AppState.activeProfile = newProfile
   }
+
 }
 
 export const profilesService = new ProfilesService()

@@ -13,6 +13,7 @@ const profile = computed(() => AppState.activeProfile)
 
 onMounted(() => {
   getProfileById()
+  getPostsbyCreatorId()
 })
 
 async function getProfileById() {
@@ -29,7 +30,8 @@ async function getProfileById() {
 
 async function getPostsbyCreatorId() {
   try {
-    await postsService.getPostsbyCreatorId()
+    const profileId = route.params.profileId
+    await postsService.getPostsbyCreatorId(profileId)
   }
   catch (error) {
     Pop.error(error);
