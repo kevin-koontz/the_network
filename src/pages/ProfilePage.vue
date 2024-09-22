@@ -92,8 +92,8 @@ function checkResume() {
       </div>
     </div>
     <div class="p-4">
-      <h4 class="m-0">Summer 2018</h4>
-      <h1 class="fw-bold">Bailey Richards</h1>
+      <h4 class="m-0">{{ profile.class }}</h4>
+      <h1 class="fw-bold">{{ profile.name }}</h1>
       <i>{{ profile.bio }}</i>
     </div>
     <div class="d-flex justify-content-end p-4">
@@ -153,6 +153,7 @@ i {
   height: 10dvh;
   aspect-ratio: 1/1;
   border-radius: 50%;
+  border: 4px solid black;
   object-fit: cover;
   object-position: center;
   position: absolute;
