@@ -6,10 +6,12 @@ import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
 import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import PostCard from "@/components/globals/PostCard.vue";
 
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
+const posts = computed(() => AppState.posts)
 
 onMounted(() => {
   getProfileById()
@@ -102,6 +104,12 @@ function checkResume() {
 
   <div v-else>
     <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
+  </div>
+
+  <div v-for="post in posts" :key="post.id" class="my-5">
+    <div>
+      <PostCard :postProp="post" />
+    </div>
   </div>
 
 </template>
