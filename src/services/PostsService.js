@@ -6,6 +6,7 @@ import { Post } from "@/models/Post.js"
 
 class PostsService {
   async getAllPosts() {
+    AppState.posts = null
     const response = await api.get('api/posts')
     logger.log('GOT POSTS', response.data)
     const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
@@ -15,6 +16,8 @@ class PostsService {
   async getPostsbyCreatorId(profileId) {
     const response = await api.get(`api/profiles/${profileId}/posts`)
     logger.log('GOT POSTS FROM PROFILE', response.data)
+    const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
+    AppState.posts = newPosts
   }
 }
 
