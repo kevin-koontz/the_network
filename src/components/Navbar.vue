@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="btn text-success lighten-30 selectable text-uppercase">Home</div>
+      <div class="btn text-success lighten-30 selectable text-uppercase">THE_NETWORK</div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +23,11 @@ onMounted(() => {
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
+        <!-- <li>
+          <router-link :to="{ name: 'UserProfile' }">
+            <div class="btn text-success lighten-30 selectable text-uppercase">USER PROFILE</div>
           </router-link>
-        </li>
+        </li> -->
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />

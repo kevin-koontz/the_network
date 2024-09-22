@@ -8,10 +8,15 @@ defineProps({
 
 
 <template>
-  <div class="d-flex m-2">
-    <img :src="adProp.tall" alt="AD DISPLAY HERE">
+  <div class="my-4">
+    <img :src="adProp.tall" alt="AD DISPLAY HERE" class="rounded shadow">
   </div>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+img {
+  height: 100%;
+  width: 100%;
+}
+</style>

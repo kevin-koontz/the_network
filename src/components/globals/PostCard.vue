@@ -11,7 +11,10 @@ defineProps({
   <div class="rounded shadow">
     <div class="d-flex justify-content-between">
       <div class="d-flex justify-content-start">
-        <img :src="postProp.creator.picture" alt="User Profile Image" class="user-profile-img m-4">
+        <router-link :to="{ name: 'UserProfile', params: { profileId: postProp.creatorId } }"
+          :title="`Go to ${postProp.creator.name}'s Profile Page!`">
+          <img :src="postProp.creator.picture" alt="NO IMAGE PROVIDED" class="user-profile-img m-4">
+        </router-link>
         <div class="my-5">
           <h4>{{ postProp.creator.name }}</h4>
           <div class="d-flex justify-content-start">
@@ -20,21 +23,23 @@ defineProps({
           </div>
         </div>
       </div>
-      <!-- FIXME - get '...' to top of element -->
       <div>
+        <!-- //FIXME - get '...' to top of element -->
         <div class="btn fs-1 mx-4">...</div>
       </div>
     </div>
     <div>
-      <div class="px-5 mb-4">
+      <div class="px-5 text-style">
         {{ postProp.body }}
       </div>
-      <img :src="postProp.imgUrl" alt="User posted image" class="user-post-img">
+      <img v-if="postProp.imgUrl" :src="postProp.imgUrl" alt="BROKEN IMAGE LINK" class="user-post-img">
     </div>
     <div class="d-flex justify-content-end fs-1 p-3">
       <i class="mdi mdi-cards-heart-outline"></i>
+      <!-- //FIXME - update with v-if="postProp.likeIds == account.id" once we have access to account id -->
       <i class="mdi mdi-cards-heart"></i>
-      <div class="fs-4 mt-3 mx-2">13</div>
+      <!-- //FIXME - + logic => only show likes if likes >  -->
+      <div v-if="postProp.likes.length > 0" class="fs-4 mt-3 mx-2">{{ postProp.likes.length }}</div>
     </div>
   </div>
 </template>
@@ -42,7 +47,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .user-profile-img {
-  height: 10dvh;
+  height: 5dvh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
@@ -50,10 +55,17 @@ defineProps({
 }
 
 .user-post-img {
-  height: 40dvh;
+  height: 30dvh;
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
+  margin-top: 1rem;
+}
+
+.text-style {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  font-weight: 400;
 }
 </style>
