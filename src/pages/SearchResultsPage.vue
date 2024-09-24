@@ -42,7 +42,6 @@ async function getPostsByQuery() {
     <input v-model="userSearchQuery.body" class="form-control search-style w-50 mt-3" id="body" name="body" type="text"
       placeholder="Search" maxlength="1000">
   </form>
-  <!-- //FIXME - update Search Results => Search Results for ${X} & only show after getPostsbyQuery() -->
   <h1 class="text-center text-decoration-underline mt-3">Search Results</h1>
 
   <div v-for="post in foundPosts" :key="post.id" class="my-5">

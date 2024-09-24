@@ -14,6 +14,7 @@ const props = defineProps({
 })
 
 
+
 async function deletePost() {
   try {
     const userToDelete = await Pop.confirm("Are you certain you wish to delete this Post?!")
@@ -38,6 +39,10 @@ async function likePost(postId) {
     logger.error(error)
   }
 }
+
+// function clearLikedPosts() {
+//   AppState.likedPosts = []
+// }
 </script>
 
 
