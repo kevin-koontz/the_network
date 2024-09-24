@@ -33,9 +33,13 @@ async function createPost() {
 
 
 <template>
+
+  <!-- //FIXME NEED TO RENDER NEW POST UPON createPost() w/o RELOAD -->
   <div class="rounded shadow">
     <div class="d-flex">
-      <img :src="account.picture" alt="User Profile Image" class="user-profile-img m-4">
+      <div>
+        <img :src="account.picture" alt="User Profile Image" class="user-profile-img m-4">
+      </div>
       <div class="mt-4">
         <textarea v-model="userInputPostData.body" class="form-control text-area" name="body" id="body" required
           maxlength="1000" placeholder="Share posts here!"></textarea>
@@ -76,7 +80,8 @@ async function createPost() {
 
 .text-area {
   height: 15dvh;
-  width: 100dvh;
+  width: 55dvw;
+  max-width: 100%;
   border: 1px solid black;
 }
 
