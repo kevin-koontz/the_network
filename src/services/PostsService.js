@@ -8,13 +8,9 @@ import { Post } from "@/models/Post.js"
 class PostsService {
   async likePost(postId, accountId) {
     const response = await api.post(`api/posts/${postId}/like`, accountId)
+    logger.log('LIKED/UNLIKED POST', response.data)
     return response.data
   }
-  // async handleLike(likeId) {
-  //   const response = await api.post(`api/posts/${likeId}/like`)
-  //   logger.log('USER LIKED POST', response.data)
-  //   return response.data
-  // }
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log('DELETED USER POST', response.data)

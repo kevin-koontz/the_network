@@ -32,7 +32,7 @@ const postId = props.postProp.id
 async function likePost(postId) {
   const accountId = account.value.id
   try {
-    const updatedPost = await postsService.likePost(postId, accountId)
+    await postsService.likePost(postId, accountId)
   }
   catch (error) {
     Pop.error(error);
@@ -71,10 +71,8 @@ async function likePost(postId) {
     </div>
     <div class="d-flex justify-content-end fs-1 p-3">
       <div @click.prevent="likePost(postId)" class="btn fs-3">
-        <i class="mdi mdi-cards-heart-outline"></i>
-        <!-- //FIXME - update with v-if="postProp.likeIds == account.id" once we have access to account id -->
-        <i class="mdi mdi-cards-heart"></i>
-        <!-- //FIXME - + logic => only show likes if likes >  -->
+        <i v-if="postProp.likeIds != account?.id" class="mdi mdi-cards-heart-outline"></i>
+        <i v-else class="mdi mdi-cards-heart"></i>
       </div>
       <div v-if="postProp.likes.length > 0" class="fs-6 mt-3 mx-2">{{ postProp.likes.length }}</div>
     </div>
