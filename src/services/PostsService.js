@@ -2,10 +2,14 @@ import { logger } from "@/utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { AppState } from "@/AppState.js"
 import { Post } from "@/models/Post.js"
-import App from "@/App.vue"
+
 
 
 class PostsService {
+  async likePost(likeId) {
+    const response = await api.post(`api/posts/${likeId}/like`)
+    logger.log('USER LIKED POST', response.data)
+  }
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log('DELETED USER POST', response.data)

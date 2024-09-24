@@ -8,12 +8,11 @@ import Pop from "@/utils/Pop.js";
 import { computed } from "vue";
 
 const account = computed(() => AppState.account)
-const posts = computed(() => AppState.posts)
 
 const props = defineProps({
-  postProp: { type: Post, required: true },
-  // accountProp: { type: Account, required: true }
+  postProp: { type: Post, required: true }
 })
+
 
 async function deletePost() {
   try {
@@ -27,7 +26,17 @@ async function deletePost() {
     Pop.error(error);
     logger.error(error);
   }
+}
 
+async function likePost() {
+  try {
+    const likeId = account.value.id
+    await postsService.likePost(likeId)
+  }
+  catch (error) {
+    Pop.error(error);
+    logger.error(error)
+  }
 }
 </script>
 
@@ -60,11 +69,13 @@ async function deletePost() {
       <img v-if="postProp.imgUrl" :src="postProp.imgUrl" alt="BROKEN IMAGE LINK" class="user-post-img">
     </div>
     <div class="d-flex justify-content-end fs-1 p-3">
-      <i class="mdi mdi-cards-heart-outline"></i>
-      <!-- //FIXME - update with v-if="postProp.likeIds == account.id" once we have access to account id -->
-      <i class="mdi mdi-cards-heart"></i>
-      <!-- //FIXME - + logic => only show likes if likes >  -->
-      <div v-if="postProp.likes.length > 0" class="fs-4 mt-3 mx-2">{{ postProp.likes.length }}</div>
+      <div @click.prevent="likePost()" class="btn fs-3">
+        <i class="mdi mdi-cards-heart-outline"></i>
+        <!-- //FIXME - update with v-if="postProp.likeIds == account.id" once we have access to account id -->
+        <i class="mdi mdi-cards-heart"></i>
+        <!-- //FIXME - + logic => only show likes if likes >  -->
+      </div>
+      <div v-if="postProp.likes.length > 0" class="fs-6 mt-3 mx-2">{{ postProp.likes.length }}</div>
     </div>
   </div>
 </template>

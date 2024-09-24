@@ -1,6 +1,8 @@
 import { reactive } from 'vue'
 import { Post } from "./models/Post.js"
 import { Ad } from "./models/Ad.js"
+import { Account } from "./models/Account.js"
+
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
