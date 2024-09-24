@@ -5,6 +5,12 @@ import { Post } from "@/models/Post.js"
 
 
 class PostsService {
+  async getPostsbyQuery(searchQuery) {
+    const response = await api.get(`api/posts?query=${searchQuery}`)
+    logger.log('GOT POSTS WITH SEARCHQUERY', response.data)
+    const newPosts = response.data.posts.map(postPOJO => new Post(postPOJO))
+    AppState.searchedPosts = newPosts
+  }
   async getAllPosts() {
     AppState.posts = null
     const response = await api.get('api/posts')

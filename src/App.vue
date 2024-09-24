@@ -42,6 +42,7 @@ async function getAds() {
           <div v-for="ad in ads" :key="ad.title">
             <AdCard :adProp="ad" />
           </div>
+          <!-- //NOTE - vueflix = page btn / artterminal = modals/profile -->
         </div>
       </section>
     </div>

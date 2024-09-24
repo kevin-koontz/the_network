@@ -18,7 +18,7 @@ defineProps({
         <div class="my-5">
           <h4>{{ postProp.creator.name }}</h4>
           <div class="d-flex justify-content-start">
-            <div class="mt-2 mx-2 fs-5">{{ postProp.customDate }}h</div>
+            <div class="mt-2 mx-2 fs-5">{{ postProp.createdAt.toDateString() }}</div>
             <div class="mdi mdi-account-school mx-2 fs-3"></div>
           </div>
         </div>
