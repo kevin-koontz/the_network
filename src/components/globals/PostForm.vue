@@ -80,7 +80,8 @@ async function createPost() {
 
 .text-area {
   height: 15dvh;
-  width: 55dvw;
+  width: 50dvw;
+  max-width: 100%;
   max-width: 100%;
   border: 1px solid black;
 }

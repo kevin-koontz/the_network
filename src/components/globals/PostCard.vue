@@ -11,7 +11,6 @@ const account = computed(() => AppState.account)
 
 const props = defineProps({
   postProp: { type: Post, required: true },
-  // accountProp: { type: Account, required: true }
 })
 
 
@@ -71,7 +70,8 @@ async function likePost(postId) {
     </div>
     <div class="d-flex justify-content-end fs-1 p-3">
       <div @click.prevent="likePost(postId)" class="btn fs-3">
-        <i v-if="postProp.likeIds != account?.id" class="mdi mdi-cards-heart-outline"></i>
+        <i v-if="postProp.likeIds.find(likeId => likeId == account?.id) == undefined"
+          class="mdi mdi-cards-heart-outline"></i>
         <i v-else class="mdi mdi-cards-heart"></i>
       </div>
       <div v-if="postProp.likes.length > 0" class="fs-6 mt-3 mx-2">{{ postProp.likes.length }}</div>
