@@ -10,7 +10,8 @@ import { computed } from "vue";
 const account = computed(() => AppState.account)
 
 const props = defineProps({
-  postProp: { type: Post, required: true }
+  postProp: { type: Post, required: true },
+  // accountProp: { type: Account, required: true }
 })
 
 
@@ -27,11 +28,11 @@ async function deletePost() {
     logger.error(error);
   }
 }
-
-async function likePost() {
+const postId = props.postProp.id
+async function likePost(postId) {
+  const accountId = account.value.id
   try {
-    const likeId = account.value.id
-    await postsService.likePost(likeId)
+    const updatedPost = await postsService.likePost(postId, accountId)
   }
   catch (error) {
     Pop.error(error);
@@ -69,7 +70,7 @@ async function likePost() {
       <img v-if="postProp.imgUrl" :src="postProp.imgUrl" alt="BROKEN IMAGE LINK" class="user-post-img">
     </div>
     <div class="d-flex justify-content-end fs-1 p-3">
-      <div @click.prevent="likePost()" class="btn fs-3">
+      <div @click.prevent="likePost(postId)" class="btn fs-3">
         <i class="mdi mdi-cards-heart-outline"></i>
         <!-- //FIXME - update with v-if="postProp.likeIds == account.id" once we have access to account id -->
         <i class="mdi mdi-cards-heart"></i>
