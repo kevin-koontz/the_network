@@ -12,6 +12,7 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const posts = computed(() => AppState.posts)
+const account = computed(() => AppState.account)
 
 onMounted(() => {
   getProfileById()
@@ -104,6 +105,16 @@ function checkResume() {
 
   <div v-else>
     <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
+  </div>
+
+  <div v-if="account">
+
+    <div class="mt-5 mb-3">
+      <div>
+        <PostForm />
+      </div>
+    </div>
+
   </div>
 
   <div v-for="post in posts" :key="post.id" class="my-5">

@@ -2,9 +2,16 @@ import { logger } from "@/utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { AppState } from "@/AppState.js"
 import { Post } from "@/models/Post.js"
+import App from "@/App.vue"
 
 
 class PostsService {
+  async createPost(inputPostData) {
+    const response = await api.post('api/posts', inputPostData)
+    logger.log('CREATED POST', response.data)
+    const newPost = new Post(response.data)
+    AppState.posts.push(newPost)
+  }
   async getPostsbyQuery(searchQuery) {
     const response = await api.get(`api/posts?query=${searchQuery}`)
     logger.log('GOT POSTS WITH SEARCHQUERY', response.data)

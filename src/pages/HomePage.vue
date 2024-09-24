@@ -3,7 +3,7 @@ import { AppState } from "@/AppState.js";
 import { postsService } from "@/services/PostsService.js";
 import { logger } from "@/utils/Logger.js";
 import Pop from "@/utils/Pop.js";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, onUpdated } from "vue";
 import PostCard from "@/components/globals/PostCard.vue";
 import PostForm from "@/components/globals/PostForm.vue";
 
@@ -14,6 +14,9 @@ const account = computed(() => AppState.account)
 onMounted(() => {
   getAllPosts()
 })
+
+
+
 
 async function getAllPosts() {
   try {
