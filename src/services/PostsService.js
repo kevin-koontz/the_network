@@ -6,8 +6,11 @@ import App from "@/App.vue"
 
 
 class PostsService {
-  deletePost(id) {
-    throw new Error("Method not implemented.")
+  async deletePost(postId) {
+    const response = await api.delete(`api/posts/${postId}`)
+    logger.log('DELETED USER POST', response.data)
+    const postIndex = AppState.posts.findIndex(post => post.id == postId)
+    AppState.posts.splice(postIndex, 1)
   }
   async createPost(inputPostData) {
     const response = await api.post('api/posts', inputPostData)
