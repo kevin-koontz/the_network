@@ -68,15 +68,6 @@ async function createPost() {
   object-position: center;
 }
 
-.user-post-img {
-  height: 30dvh;
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: center;
-  margin-top: 1rem;
-}
-
 .text-style {
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
@@ -84,8 +75,8 @@ async function createPost() {
 }
 
 .text-area {
-  height: 150px;
-  width: 700px;
+  height: 15dvh;
+  width: 100dvh;
   border: 1px solid black;
 }
 

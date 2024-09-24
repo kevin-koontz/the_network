@@ -1,9 +1,34 @@
 <script setup>
+import { AppState } from "@/AppState.js";
+import { Account } from "@/models/Account.js";
 import { Post } from "@/models/Post.js";
+import { postsService } from "@/services/PostsService.js";
+import { logger } from "@/utils/Logger.js";
+import Pop from "@/utils/Pop.js";
+import { computed } from "vue";
 
-defineProps({
-  postProp: { type: Post, required: true }
+const account = computed(() => AppState.account)
+const posts = computed(() => AppState.posts)
+
+const props = defineProps({
+  postProp: { type: Post, required: true },
+  // accountProp: { type: Account, required: true }
 })
+
+async function deletePost() {
+  try {
+    const userToDelete = await Pop.confirm("Are you certain you wish to delete this Post?!")
+
+    if (!userToDelete) { return }
+
+    await postsService.deletePost(props.postProp.id)
+  }
+  catch (error) {
+    Pop.error(error);
+    logger.error(error);
+  }
+
+}
 </script>
 
 
@@ -24,8 +49,8 @@ defineProps({
         </div>
       </div>
       <div>
-        <!-- //FIXME - get '...' to top of element -->
-        <div class="btn fs-1 mx-4">...</div>
+        <button v-if="postProp.creatorId == account?.id" @click="deletePost()"
+          class="btn btn-outline-danger mx-4">Delete</button>
       </div>
     </div>
     <div>

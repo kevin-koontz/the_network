@@ -6,6 +6,9 @@ import App from "@/App.vue"
 
 
 class PostsService {
+  deletePost(id) {
+    throw new Error("Method not implemented.")
+  }
   async createPost(inputPostData) {
     const response = await api.post('api/posts', inputPostData)
     logger.log('CREATED POST', response.data)

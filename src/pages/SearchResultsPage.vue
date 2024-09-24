@@ -39,7 +39,7 @@ async function getPostsByQuery() {
 
 <template>
   <form @submit.prevent="getPostsByQuery()" class="d-flex justify-content-center">
-    <input v-model="userSearchQuery.body" class="form-control w-50 mt-3" id="body" name="body" type="text"
+    <input v-model="userSearchQuery.body" class="form-control search-style w-50 mt-3" id="body" name="body" type="text"
       placeholder="Search" maxlength="1000">
   </form>
   <!-- //FIXME - update Search Results => Search Results for ${X} & only show after getPostsbyQuery() -->
@@ -57,4 +57,8 @@ async function getPostsByQuery() {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-style {
+  border: 1px solid black;
+}
+</style>
